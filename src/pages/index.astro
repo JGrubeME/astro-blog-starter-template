@@ -1,50 +1,134 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../config/site";
+import Hero from "../components/widgets/Hero.astro";
+import Features from "../components/widgets/Features.astro";
+import devImg from "../assets/images/dev_balanced.png";
+import openSourceImg from "../assets/images/open-source.png";
+import Content2 from "../components/widgets/Content2.astro";
+const metadata = {
+	title: `${siteConfig.name} — The next step for your project`,
+	description:
+		"A modern and professional template for your web projects with Astro and Tailwind CSS. Boost your development with a solid foundation.",
+	ignoreTitleTemplate: true,
+};
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<BaseLayout {metadata}>
+	<Hero
+		title={`Starter Template for <br class="hidden md:block" /> <span class="bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Web Developers</span>`}
+		tagline="Astro v5 + Tailwind v4"
+		description={`${siteConfig.description}`}
+		actions={[
+			{
+				text: "Get Started",
+				href: "https://github.com/devgelo-labs/astro-starter-pro",
+				variant: "primary",
+				icon: "lucide:github",
+			},
+			{
+				text: "Our Services",
+				href: "/services",
+				variant: "secondary",
+				icon: "lucide:arrow-right",
+				ariaLabel: "Learn more about our services",
+			},
+		]}
+	/>
+	<Features
+		tagline="Features"
+		title="What's Included"
+		subtitle="A selection of tools and configurations to streamline your workflow."
+		features={[
+			{
+				title: "Optimized SEO",
+				description:
+					"Base configuration for Meta tags, Open Graph, and Sitemap generation.",
+				icon: "lucide:scan-search",
+				iconClass: "bg-blue-500/10 text-blue-400",
+			},
+			{
+				title: "High Performance",
+				description: "Lightweight structure for fast load times.",
+				icon: "lucide:zap",
+				iconClass: "bg-purple-500/10 text-purple-400",
+			},
+			{
+				title: "Tailwind v4",
+				description:
+					"Integrated configuration with the latest version of Tailwind CSS.",
+				icon: "lucide:palette",
+				iconClass: "bg-pink-500/10 text-pink-400",
+			},
+		]}
+	/>
+	<Content2
+		items={[
+			{
+				title: "Responsive Design",
+				description:
+					"Base configuration for Meta tags, Open Graph, and Sitemap generation.",
+				icon: "lucide:scan-search",
+				iconClass: "bg-blue-500/10 text-blue-400",
+			},
+			{
+				title: "High Performance",
+				description: "Lightweight structure for fast load times.",
+				icon: "lucide:zap",
+				iconClass: "bg-purple-500/10 text-purple-400",
+			},
+			{
+				title: "Tailwind v4",
+				description:
+					"Integrated configuration with the latest version of Tailwind CSS.",
+				icon: "lucide:palette",
+				iconClass: "bg-pink-500/10 text-pink-400",
+			},
+		]}
+		image={devImg}
+		imageAlt="Development"
+	>
+		<Fragment>
+			<h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2">
+				Development
+			</h3>
+			We provide a solid foundation to start your projects with best practices.
+		</Fragment>
+	</Content2>
+	<Content2
+		items={[
+			{
+				title: "Open Source",
+				description:
+					"Developed under the MIT license, free for personal and commercial use.",
+				icon: "lucide:github",
+				iconClass: "bg-indigo-500/10 text-indigo-400",
+			},
+			{
+				title: "Community Driven",
+				description:
+					"Built with the feedback and contributions of the developer community.",
+				icon: "lucide:users",
+				iconClass: "bg-orange-500/10 text-orange-400",
+			},
+			{
+				title: "Regular Updates",
+				description:
+					"Continuously improved with the latest technologies and best practices.",
+				icon: "lucide:refresh-cw",
+				iconClass: "bg-teal-500/10 text-teal-400",
+			},
+		]}
+		image={openSourceImg}
+		imageAlt="Community and Open Source"
+		isReversed={true}
+	>
+		<Fragment>
+			<h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2">
+				Open Source & Community
+			</h3>
+			Join the revolution of modern web development. This project is open for
+			everyone to use, learn from, and contribute to.
+		</Fragment>
+	</Content2>
+</BaseLayout>
